@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.6estates</groupId>
+    <artifactId>6crawler-apps</artifactId>
+    <version>5.33.0</version>
+    <relativePath>../../apps/</relativePath>
+  </parent>
+  
+  <artifactId>6crawler-parser</artifactId>
+  <name>6crawler-parser</name>
+  <description>crawler cluster server app</description>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.6estates</groupId>
+  		<artifactId>6crawler-model-parser</artifactId>
+  	</dependency>
+	<dependency>
+		<groupId>com.6estates</groupId>
+		<artifactId>6crawler-model-url</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.6estates</groupId>
+		<artifactId>6crawler-model-resource</artifactId>
+	</dependency>
+  	<dependency>
+  		<groupId>com.6estates</groupId>
+  		<artifactId>6crawler-data-storage</artifactId>
+  	</dependency>
+	  <dependency>
+		  <groupId>com.6estates</groupId>
+		  <artifactId>6crawler-model-external</artifactId>
+	  </dependency>
+  	<dependency>
+			<groupId>com.framework</groupId>
+			<artifactId>framework-fdfs</artifactId>
+	</dependency>
+  	<dependency>
+  		<groupId>com.alibaba</groupId>
+  		<artifactId>fastjson</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.6estates</groupId>
+  		<artifactId>template-crawler</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.6estates</groupId>
+  		<artifactId>6crawler-serialize</artifactId>
+  	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+  </dependencies>
+  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.sixestates.crawler.parser.Parser</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

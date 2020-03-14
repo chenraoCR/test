@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %level [%thread] %10logger [line:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<timestamp key="byDay" datePattern="yyyyMMdd"/>
+
+	<logger name="com.hyd.ssdb" level="WARN"></logger>
+	<logger name="org.apache" level="ERROR"></logger>
+	<logger name="org.eclipse" level="ERROR"></logger>
+	<logger name="org.hibernate" level="ERROR"></logger>
+	<logger name="org.springframework" level="ERROR"></logger>
+
+	<root level="INFO">
+		<appender-ref ref="Console" />
+	</root>
+
+</configuration>

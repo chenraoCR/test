@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<artifactId>6crawler-agent</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<name>6crawler-agent</name>
+	
+	
+	<parent>
+		<groupId>com.6estates</groupId>
+		<artifactId>6crawler-apps</artifactId>
+		<version>5.33.0</version>
+		<relativePath>../../apps/</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+	    	<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.6estates</groupId>
+			<artifactId>6crawler-model-url</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.6estates</groupId>
+			<artifactId>6crawler-model-resource</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lakeside</groupId>
+			<artifactId>lakeside-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.framework</groupId>
+			<artifactId>framework-fdfs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.6estates</groupId>
+			<artifactId>6crawler-model-proxy</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.6estates</groupId>
+            <artifactId>6crawler-model-external</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.6estates</groupId>
+            <artifactId>6crawler-data-storage</artifactId>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.sixestates.crawler.agent.Agent</mainClass>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

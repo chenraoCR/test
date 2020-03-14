@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>6crawler-link-modifier</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>6crawler-link-modifier</name>
+  
+  <parent>
+    <groupId>com.6estates</groupId>
+    <artifactId>6crawler-apps</artifactId>
+    <version>5.33.0</version>
+    <relativePath>../../apps/</relativePath>
+  </parent>
+
+  <dependencies>
+  	<dependency>
+  		<groupId>com.6estates</groupId>
+  		<artifactId>6crawler-model-url</artifactId>
+  	</dependency>
+  </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.sixestates.crawler.linkmodifier.LinkModifier</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
